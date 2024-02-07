@@ -1,0 +1,3 @@
+#!/bin/sh
+# 加载 brcmfmac 驱动
+modprobe brcmfmac
