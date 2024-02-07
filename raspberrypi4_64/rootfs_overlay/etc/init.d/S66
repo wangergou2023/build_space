@@ -1,3 +1,24 @@
 #!/bin/sh
+
+set -ex
+
 # 加载 brcmfmac 驱动
 modprobe brcmfmac
+# 等待 1 秒
+sleep 1
+
+if true; then
+    # 重启 wlan0 网卡
+    ifup -a
+else
+    # 启动 wlan0 网卡
+    ifconfig wlan0 up
+    # 等待 1 秒
+    sleep 1
+    # 连接无线网络
+    wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf &
+    # 等待 1 秒
+    sleep 1
+    # 获取 IP 地址
+    udhcpc -i wlan0
+fi
