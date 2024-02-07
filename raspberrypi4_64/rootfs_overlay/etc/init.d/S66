@@ -1,9 +1,12 @@
 #!/bin/sh
 
 set -ex
-
+# 挂载debug文件系统
+mount -t debugfs none /sys/kernel/debug
 # 加载 brcmfmac 驱动
 modprobe brcmfmac
+# 加载 snd-usb-audio 驱动
+modprobe snd-usb-audio
 # 等待 1 秒
 sleep 1
 
