@@ -25,3 +25,4 @@ else
     # 获取 IP 地址
     udhcpc -i wlan0
 fi
+    udhcpc -i eth0
